@@ -17,4 +17,9 @@ fs.appendFileSync(
   "\n Node.js is an open-source, cross-platform JavaScript runtime environment"
 );
 
-fs.unlinkSync("index.html", "file deleted");
+try {
+  fs.unlinkSync("index.html");
+  console.log("file deleted successfully");
+} catch (err) {
+  console.log("error in deleting file", err);
+}
