@@ -2,6 +2,7 @@
 // Read the content of a file and display it in the console.
 // Append new content to an existing file.
 // Delete a specific file.
+// Create a module that writes data to a file, and another module that reads data from the same file.
 
 //? FS Module
 const fs = require("fs");
@@ -17,5 +18,3 @@ fs.appendFileSync(
 );
 
 fs.unlinkSync("index.html", "file deleted");
-
-// Create a module that writes data to a file, and another module that reads data from the same file.
