@@ -1,6 +1,4 @@
 // Create a basic HTTP server that returns “Server is Running Successfully”.
-// Create a server that returns JSON data when accessed from the browser.
-// Create a server that writes the current date and time in a file every time a GET request is received.
 
 const http = require("http");
 
@@ -12,6 +10,8 @@ const server = http.createServer((req, res) => {
 server.listen(3000, () => {
   console.log("server is running on http://localhost:3000");
 });
+
+// Create a server that returns JSON data when accessed from the browser.
 
 const jsonServer = http.createServer((req, res) => {
   res.writeHead(200, { "content-type": "application/json" });
@@ -35,3 +35,28 @@ const data = {
     name: "typicode",
   },
 };
+
+// Create a server that writes the current date and time in a file every time a GET request is received.
+
+const fs = require("fs");
+
+const app = http.createServer((req, res) => {
+  if (req.method === "GET") {
+    const now = new Date().toString();
+
+    fs.appendFile("date.txt", now, (err) => {
+      console.error("Error writing to file:", err);
+      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.end("Server error");
+    });
+    res.writeHead(200, { "content-type": "text/plain" });
+    res.end(now);
+  } else {
+    res.writeHead(405, { "Content-Type": "text/plain" });
+    res.end("Only GET requests are allowed");
+  }
+});
+
+app.listen(4000, () => {
+  console.log("http://localhost:4000");
+});
