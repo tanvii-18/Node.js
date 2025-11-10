@@ -1,10 +1,7 @@
 // Create a basic HTTP server that returns “Server is Running Successfully”.
 
 // Create a server that writes the current date and time in a file every time a GET request is received.
-// Create a custom module that exports a function to print your name.
-// Create a module that exports a function to add two numbers and import it in another file.
-// Create a module with multiple functions: add, subtract, multiply, and divide — import all and use them.
-// Create a module that writes data to a file, and another module that reads data from the same file.
+
 // Create a logger module that saves all console messages to a log.txt file.
 // Create a custom module to count the number of words in a given text.
 // Create a date utility module that exports today’s date and current time.
