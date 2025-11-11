@@ -22,48 +22,32 @@ const server = http.createServer((req, res) => {
 
   if (req.url === "/") {
     filepath = path.join(__dirname, "home.html");
-    fs.readFile(filepath, (err, data) => {
-      if (err) {
-        res.writeHead(500, { "content-type": "text/plain" });
-        res.end("server Error");
-      } else {
-        res.writeHead(200, { "content-type": "text/html" });
-        res.end(data);
-      }
-    });
   }
   //   about page
   else if (req.url == "/about") {
     filepath = path.join(__dirname, "about.html");
-    fs.readFile(filepath, (err, data) => {
-      if (err) {
-        res.writeHead(500, { "content-type": "text/plain" });
-        res.end("server Error");
-      } else {
-        res.writeHead(200, { "content-type": "text/html" });
-        res.end(data);
-      }
-    });
   }
 
   //   contact page
   else if (req.url == "/contact") {
     filepath = path.join(__dirname, "contact.html");
-    fs.readFile(filepath, (err, data) => {
-      if (err) {
-        res.writeHead(500, { "content-type": "text/plain" });
-        res.end("server Error");
-      } else {
-        res.writeHead(200, { "content-type": "text/html" });
-        res.end(data);
-      }
-    });
   }
   //   client error
   else {
     res.writeHead(404, { "content-type": "text/plain" });
     res.end("404 page not found!");
   }
+
+  // data
+  fs.readFile(filepath, (err, data) => {
+    if (err) {
+      res.writeHead(500, { "content-type": "text/plain" });
+      res.end("server Error");
+    } else {
+      res.writeHead(200, { "content-type": "text/html" });
+      res.end(data);
+    }
+  });
 });
 
 server.listen(5000, () => {
