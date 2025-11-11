@@ -19,6 +19,23 @@ const path = require("path");
 
 const server = http.createServer((req, res) => {
   let filepath;
+  const now = new Date();
+
+  console.log(`[request time : ${now.toISOString()}] Request URL : ${req.url}`);
+
+  // json data
+  if (req.url === "/jsondata") {
+    const data = {
+      BookName: "Atomic habits",
+      price: 5.89,
+      rating: "4.5 / 5",
+      inStock: true,
+    };
+
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(JSON.stringify(data));
+    return;
+  }
 
   if (req.url === "/") {
     filepath = path.join(__dirname, "home.html");
@@ -32,25 +49,13 @@ const server = http.createServer((req, res) => {
   else if (req.url == "/contact") {
     filepath = path.join(__dirname, "contact.html");
   }
-  // json data
-  else if (req.url === "/data") {
-    const data = {
-      BookName: "Atomic habits",
-      price: 5.89,
-      rating: "4.5 / 5",
-      inStock: "true",
-    };
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify(data));
-  }
   //   client error
   else {
-    res.writeHead(404, { "content-type": "text/plain" });
-    res.end("404 page not found!");
+    filepath = path.join(__dirname, "404.html");
   }
 
-  // data
+  // read data from another files
   fs.readFile(filepath, (err, data) => {
     if (err) {
       res.writeHead(500, { "content-type": "text/plain" });
