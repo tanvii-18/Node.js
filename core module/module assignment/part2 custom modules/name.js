@@ -1,4 +1,4 @@
-const name = (name) => {
+export const name = (name) => {
   console.log(name);
 };
 

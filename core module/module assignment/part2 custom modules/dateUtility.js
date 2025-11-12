@@ -1,6 +1,6 @@
 // Create a date utility module that exports today’s date and current time.
 
-const dateTimeUtility = () => {
+export const dateTimeUtility = () => {
   const now = new Date();
 
   const date = now.getDate();
