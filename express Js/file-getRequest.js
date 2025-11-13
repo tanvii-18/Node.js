@@ -7,11 +7,13 @@ const app = express();
 app.get("/", (req, res) => {
   const now = new Date();
 
-  //   const hour = now.getHours();
-  //   const min = now.getMinutes();
-  //   const sec = now.getSeconds();
+  const date = now.toISOString().split("T")[0];
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
   //   console.log(hour, min, sec);
-  res.send(`${now}`);
+
+  res.send(`Time : ${hour}:${min}:${sec} Date : ${date}`);
 });
 
 app.listen(3000, () => {
