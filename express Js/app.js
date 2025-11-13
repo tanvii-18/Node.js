@@ -1,3 +1,13 @@
 // Create a basic express Js server that returns “Server is Running Successfully”.
-// Create a server that returns JSON data when accessed from the browser.
-// Create a server that writes the current date and time in a file every time a GET request is received.
+
+import express from "express";
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Server is Running Successfully");
+});
+
+app.listen(5000, () => {
+  console.log("http://localhost:5000");
+});
