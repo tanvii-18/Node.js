@@ -1,6 +1,9 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 const todos = [
   {
@@ -17,10 +20,21 @@ const todos = [
   },
 ];
 
-app.get("/", (req, res) => {
+app.get("/api/todos", (req, res) => {
   res.json(todos);
 });
 
+// get todo By id
+app.get("/api/todo/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const todo = todos.find((todo) => todo.id === id);
+
+  if (!todo) {
+    return res.status(404).json({ err: "Todo Not Found!" });
+  }
+  res.json(todo);
+});
+
 app.listen(4000, () => {
-  console.log("http://localhost:4000");
+  console.log("http://localhost:4000/api/todos");
 });
