@@ -13,55 +13,89 @@ function App() {
   }, []);
 
   const handleAddTask = () => {
-    if (newTask.trim() !== "") {
-      setTodo([...todo, { text: newTask, completed: false }]);
-      setNewTask("");
-    }
+    if (newTask.trim() === "") return;
+
+    fetch("http://localhost:4000/api/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ todo: newTask, desc: "" }),
+    })
+      .then((res) => res.json())
+      .then((newTodo) => {
+        setTodo([...todo, newTodo]);
+        setNewTask("");
+      });
   };
 
-  const handleDeleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTodo(updatedTasks);
+  const handleDeleteTask = (id) => {
+    fetch(`http://localhost:4000/api/todos/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setTodo(todo.filter((task) => task.id !== id));
+    });
   };
 
-  const handleToggleComplete = (index) => {
-    const updatedTasks = tasks.map((task, i) =>
-      i === index ? { ...task, completed: !task.completed } : task
-    );
-    setTodo(updatedTasks);
-  };
+  // const handleToggleComplete = (index) => {
+  //   const updatedTasks = tasks.map((task, i) =>
+  //     i === index ? { ...task, completed: !task.completed } : task
+  //   );
+  //   setTodo(updatedTasks);
+  // };
 
   return (
-    <div>
-      <div>
-        <h1>React Todo App</h1>
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Add a new task"
-        />
-        <button onClick={handleAddTask}>Add Task</button>
-      </div>
+    <div className="h-full w-full">
+      <div className="h-auto w-96 m-auto py-8">
+        <h1 className="text-center mb-2"> Todo App</h1>
 
-      {/* showing todos */}
-      <div className="todo-section">
-        {todo.map((task) => (
-          <li
-            key={task.id}
-            className={`todo-item ${task.isCompleted ? "completed" : ""}`}
+        <div className="h-auto w-80 m-auto py-2 flex gap-4">
+          <input
+            type="text"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            placeholder="Add task here..."
+            className="border p-2 rounded-3xl"
+          />
+          <button
+            onClick={handleAddTask}
+            className="bg-blue-600 px-4 text-white rounded-4xl"
           >
-            <span className="task-text">
-              <strong>{task.todo}</strong>{" "}
-              <span className="text-[10px] text-gray-400">{task.desc}</span>
-            </span>
+            +
+          </button>
+        </div>
 
-            <div className="actions">
-              <button>{task.isCompleted ? "Completed" : "Pending"}</button>
-              <button className="delete-btn">Delete</button>
-            </div>
-          </li>
-        ))}
+        {/* showing todos */}
+        <div className="todo-section h-auto w-80 m-auto">
+          <ul
+            className="todo-list"
+            style={{
+              listStyle: "none",
+              margin: "20px 0",
+              textAlign: "start",
+            }}
+          >
+            {todo.map((task) => (
+              <li
+                key={task.id}
+                className={`todo-item ${task.isCompleted ? "completed" : ""}`}
+              >
+                <span className="task-text mb-2">
+                  <strong>{task.todo}</strong>{" "}
+                  <span className="text-[10px] text-gray-400">{task.desc}</span>
+                </span>
+
+                <div className="actions mb-4">
+                  <button>{task.isCompleted ? "Completed" : "Pending"}</button>
+                  <button
+                    className="delete-btn text-red-700 ps-2 cursor-pointer"
+                    onClick={handleDeleteTask(task.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

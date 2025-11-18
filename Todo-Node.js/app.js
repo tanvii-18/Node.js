@@ -35,6 +35,26 @@ app.get("/api/todo/:id", (req, res) => {
   res.json(todo);
 });
 
+// ADD new todo
+app.post("/api/todos", (req, res) => {
+  const newTodo = {
+    id: todos.length + 1,
+    todo: req.body.todo || "New Task",
+    desc: req.body.desc || "",
+    isCompleted: false,
+  };
+  todos.push(newTodo);
+  res.json(newTodo);
+});
+
+// app.delete("/api/todos/:id", (req, res) => {
+//   const id = Number(req.params.id);
+//   if (!id || isNaN(id)) return res.status(400).json({ error: "Invalid id" });
+
+//   todos = todos.filter((t) => t.id !== id);
+//   res.json({ message: "deleted" });
+// });
+
 app.listen(4000, () => {
   console.log("http://localhost:4000/api/todos");
 });
