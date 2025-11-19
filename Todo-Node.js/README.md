@@ -1,16 +1,35 @@
-# React + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, modern, and super-fast Todo application built with Vite + React + Tailwind CSS
 
-Currently, two official plugins are available:
+![Vite](https://img.shields.io/badge/Vite-5.4-purple?logo=vite)
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Simple, elegant task manager with a minimalist design — perfect for staying organized!
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add new tasks instantly
+- Toggle task completion (mark as done/undone)
+- Delete tasks with smooth animations
+- Fully responsive — looks great on mobile, tablet, and desktop
+- Beautiful, modern UI powered by Tailwind CSS
+- Lightning-fast performance thanks to Vite
+- Clean and readable React code (great for learning!)
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Vite** – Blazing fast build tool
+- **React 18** + Hooks (`useState`, `useEffect`)
+- **Tailwind CSS** – Utility-first CSS framework
+
+## ▶️ Getting Started
+
+```bash
+git clone https://github.com/tanvii-18/Node.js/tree/main/Todo-Node.js
+cd todo-app
+npm install
+npm run dev
+```

@@ -36,10 +36,12 @@ function App() {
   };
 
   // const handleToggleComplete = (index) => {
-  //   const updatedTasks = tasks.map((task, i) =>
-  //     i === index ? { ...task, completed: !task.completed } : task
+  //   setTodo((toggleTodo) =>
+  //     toggleTodo.map((task) =>
+  //       task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+  //     )
   //   );
-  //   setTodo(updatedTasks);
+  //   // console.log("toggled task", updatedTasks);
   // };
 
   return (
@@ -84,7 +86,9 @@ function App() {
                 </span>
 
                 <div className="actions mb-4">
-                  <button>{task.isCompleted ? "Completed" : "Pending"}</button>
+                  <button onClick={() => handleToggleComplete(todo.id)}>
+                    {task.isCompleted ? "Completed" : "Pending"}
+                  </button>
                   <button
                     className="delete-btn text-red-700 ps-2 cursor-pointer"
                     onClick={() => handleDeleteTask(task.id)}
