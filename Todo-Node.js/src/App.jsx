@@ -27,13 +27,13 @@ function App() {
       });
   };
 
-  // const handleDeleteTask = (id) => {
-  //   fetch(`http://localhost:4000/api/todos/${id}`, {
-  //     method: "DELETE",
-  //   }).then(() => {
-  //     setTodo(todo.filter((task) => task.id !== id));
-  //   });
-  // };
+  const handleDeleteTask = (id) => {
+    fetch(`http://localhost:4000/api/todos/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setTodo((delTodo) => delTodo.filter((task) => task.id !== id));
+    });
+  };
 
   // const handleToggleComplete = (index) => {
   //   const updatedTasks = tasks.map((task, i) =>
@@ -87,7 +87,7 @@ function App() {
                   <button>{task.isCompleted ? "Completed" : "Pending"}</button>
                   <button
                     className="delete-btn text-red-700 ps-2 cursor-pointer"
-                    // onClick={handleDeleteTask(task.id)}
+                    onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
                   </button>

@@ -55,6 +55,20 @@ app.post("/api/todos", (req, res) => {
   res.json(newTodo);
 });
 
+//delete task
+app.delete("/api/todos/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  // findindex find value in ascending order, if find value returns value and if not fount return -1
+  const index = todos.findIndex((task) => task.id === id);
+
+  if (index !== -1) {
+    res.status(404).json({ err: "todo not found" });
+  }
+
+  todos.splice(index, 1);
+  res.send("todo deleted");
+});
+
 app.listen(4000, () => {
   console.log("http://localhost:4000/api/todos");
 });
