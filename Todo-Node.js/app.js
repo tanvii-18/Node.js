@@ -69,6 +69,18 @@ app.delete("/api/todos/:id", (req, res) => {
   res.send("todo deleted");
 });
 
+// toggle complete task
+app.put("/api/todos/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const todo = todos.find((t) => t.id === id);
+  if (todo) {
+    todo.isCompleted = req.body.isCompleted ?? !todo.isCompleted;
+    res.json(todo);
+  } else {
+    res.status(404).json({ error: "Not found" });
+  }
+});
+
 app.listen(4000, () => {
   console.log("http://localhost:4000/api/todos");
 });
