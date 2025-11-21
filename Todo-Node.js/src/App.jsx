@@ -5,6 +5,8 @@ function App() {
   const [todo, setTodo] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [newDesc, setNewDesc] = useState("");
+  const now = new Date().toDateString();
+  console.log(now);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/todos")
@@ -65,14 +67,14 @@ function App() {
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="Add task here..."
-            className="border p-2 rounded-3xl"
+            className="border p-3 rounded-3xl text-[10px]"
           />
           <input
             type="text"
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
             placeholder="Add desc here..."
-            className="border p-2 rounded-3xl"
+            className="border p-3 rounded-3xl text-[10px]"
           />{" "}
           <button
             onClick={handleAddTask}
@@ -84,7 +86,10 @@ function App() {
 
         {/* showing todos */}
         <div className="todo-section h-auto w-100 m-auto">
-          <h2>Today's tasks</h2>
+          <h2 className="flex flex-col">
+            <strong>Today's tasks</strong>
+            <span className="text-[8px] text-gray-400">{now}</span>
+          </h2>
           <ul
             className="todo-list"
             style={{
