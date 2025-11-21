@@ -33,3 +33,4 @@ cd todo-app
 npm install
 npm run dev
 ```
+<img width="1700" height="800" alt="Image" src="https://github.com/user-attachments/assets/5cc6251d-908f-4bdb-bc32-66c5af20f1d2" />
