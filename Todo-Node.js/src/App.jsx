@@ -54,14 +54,14 @@ function App() {
   };
 
   return (
-    <div className="h-full w-full">
-      <h1 className="text-center text-3xl font-['Josefin_Sans'] my-2">
+    <div className="h-full w-ful">
+      <h1 className="text-center text-3xl font-['Josefin_Sans'] my-2 text-white">
         {" "}
         Todo App
       </h1>
 
       <div className="h-auto w-[100%] m-auto py-8 flex">
-        <div className="h-auto w-100 m-auto py-6 flex flex-col gap-4 p-4 shadow-[4px_4px_15px_rgba(0,0,0,0.3)] rounded-2xl">
+        <div className="h-auto w-100 m-auto py-6 flex flex-col gap-4 p-4 shadow-[4px_4px_15px_rgba(0,0,0,0.3)] rounded-2xl bg-white">
           <input
             type="text"
             value={newTask}
@@ -87,7 +87,7 @@ function App() {
         {/* showing todos */}
         <div className="todo-section h-auto w-100 m-auto">
           <h2 className="flex flex-col">
-            <strong>Today's tasks</strong>
+            <strong className="text-white">Today's tasks</strong>
             <span className="text-[8px] text-gray-400">{now}</span>
           </h2>
           <ul
@@ -146,7 +146,15 @@ function App() {
                   }}
                 >
                   <div className="task-text mb-2 flex flex-col">
-                    <strong>{task.todo}</strong>{" "}
+                    <p
+                      className={
+                        task.isCompleted
+                          ? "line-through text-gray-400 transition-[2s ease] font-medium"
+                          : "font-bold text-white"
+                      }
+                    >
+                      {task.todo}
+                    </p>{" "}
                     <span className="text-[10px] text-gray-400">
                       {task.desc}
                     </span>
