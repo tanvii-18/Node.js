@@ -55,26 +55,26 @@ function App() {
 
   return (
     <div className="h-full w-ful">
-      <h1 className="text-center text-3xl font-['Josefin_Sans'] my-2 text-white">
+      <h1 className="text-center text-3xl font-['Josefin_Sans'] my-4 text-white">
         {" "}
         Todo App
       </h1>
 
       <div className="h-auto w-[100%] m-auto py-8 flex">
-        <div className="h-auto w-100 m-auto py-6 flex flex-col gap-4 p-4 shadow-[4px_4px_15px_rgba(0,0,0,0.3)] rounded-2xl bg-white">
+        <div className="h-auto w-100 m-auto py-6 flex flex-col gap-4 p-4 shadow-[4px_4px_15px_rgba(0,0,0,0.3)] rounded-2xl bg-[#ffffff21]">
           <input
             type="text"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="Add task here..."
-            className="border p-3 rounded-3xl text-[10px]"
+            className="border p-3 rounded-3xl text-[10px] border-white text-white"
           />
           <input
             type="text"
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
             placeholder="Add desc here..."
-            className="border p-3 rounded-3xl text-[10px]"
+            className="border p-3 rounded-3xl text-[10px] border-white text-white"
           />{" "}
           <button
             onClick={handleAddTask}
