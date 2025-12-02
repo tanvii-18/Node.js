@@ -1,5 +1,13 @@
 {
+  "name": "initial_mongoDB-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "mongodb_driver.js",
   "dependencies": {
+    "express": "^5.2.1",
     "mongodb": "^7.0.0"
+  },
+  "scripts": {
+    "start": "node mongodb_driver.js"
   }
 }
