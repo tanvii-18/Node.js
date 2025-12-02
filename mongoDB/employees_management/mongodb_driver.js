@@ -30,4 +30,18 @@ export const readEmployees = async () => {
   return result;
 };
 
+export const updateEmployees = async (id, updateData) => {
+  const db = await connectDB();
+  const result = await db
+    .collection("employees")
+    .updateOne({ emp_id: id }, { updateData });
+  return result;
+};
+
+export const deleteEmployees = async (id) => {
+  const db = await connectDB();
+  const result = await db.collection("employees").deleteOne({ emp_id: id });
+  return result;
+};
+
 addEmployees();

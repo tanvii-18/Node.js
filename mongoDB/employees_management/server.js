@@ -1,5 +1,10 @@
 import express from "express";
-import { addEmployees, readEmployees } from "./mongodb_driver.js";
+import {
+  addEmployees,
+  readEmployees,
+  updateEmployees,
+  deleteEmployees,
+} from "./mongodb_driver.js";
 
 const app = express();
 app.use(express.json());
