@@ -8,7 +8,7 @@ const employees = "employees"; // declares database name
 export const connectDB = async () => {
   await client.connect(); // created client connection w database
   console.log("MongoDB connected");
-  return client.db(employees); //returns databse
+  return client.db(employees); //returns database
 };
 
 export const addEmployees = async () => {
