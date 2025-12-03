@@ -16,3 +16,12 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });
+
+// {
+//     "name": "Portable Phone Charger 10000mAh",
+//     "price": 29.99,
+//     "image": "https://example.com/images/powerbank.jpg",
+//     "description": "Compact power bank with fast charging and dual USB ports.",
+//     "category": "Electronics",
+//     "stock": 300
+//   }
