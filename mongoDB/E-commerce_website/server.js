@@ -7,7 +7,7 @@ app.use(express.json());
 
 connectDB();
 
-app.use("/", productRoute);
+app.use("/api/products", productRoute);
 
 app.get("/", (req, res) => {
   res.send("server is running");
