@@ -23,10 +23,10 @@ This is a simple e-commerce backend built with Node.js, Express, MongoDB, and Mo
 
 ## ⚙️ Tech Stack
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4ea94b?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
+[![Mongoose](https://img.shields.io/badge/Mongoose-red?style=for-the-badge&logo=mongoose&logoColor=white)](https://mongoosejs.com)
 
 ## 🔧 How to run locally
 
