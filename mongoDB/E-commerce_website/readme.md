@@ -11,19 +11,6 @@ A fully functional **e-commerce backend API** built with the MERN stack (MongoDB
 - Environment-based configuration
 - Tested with Thunder Client (collection included)
 
-## Tech Stack
-
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" alt="Node.js" width="60" height="60"/>
-<img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png" alt="Express" width="60" height="60"/>
-<img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongodb/mongodb.png" alt="MongoDB" width="60" height="60"/>
-<img src="https://raw.githubusercontent.com/mongoosejs/mongoose/master/docs/images/mongoose-logo.png" alt="Mongoose" width="160"/>
-<img src="https://jwt.io/img/logo-asset.svg" alt="JWT" width="60" height="60"/>
-<img src="https://seeklogo.com/images/T/thunder-client-logo-3B7D1D7F9D-seeklogo.com.png" alt="Thunder Client" width="60" height="60"/>
-
-</div>
-
 <br/>
 
 **Technologies Used:**  
