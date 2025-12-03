@@ -1,5 +1,6 @@
 import products from "../models/productModel.js";
 import { ObjectId } from "mongodb";
+import mongoose from "mongoose";
 
 // get poducts
 export const getProduct = async (req, res) => {
@@ -17,27 +18,22 @@ export const addProduct = async (req, res) => {
   res.json({ message: "Product added!", product });
 };
 
-// UPDATE Product
 export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid product ID format" });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid product ID" });
     }
 
-    const objectId = new ObjectId(id);
+    const updatedProduct = await products.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
-    const result = await products.updateOne(
-      { _id: objectId },
-      { $set: req.body }
-    );
-
-    if (result.matchedCount === 0) {
+    if (!updatedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
-
-    const updatedProduct = await products.findOne({ _id: objectId });
 
     res.json({
       message: "Product updated successfully!",
