@@ -23,3 +23,5 @@ const movieSchema = new mongoose.Schema({
     require: true,
   },
 });
+
+export default mongoose.model("Movies", movieSchema);
