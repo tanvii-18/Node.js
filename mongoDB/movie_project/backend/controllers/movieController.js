@@ -2,15 +2,24 @@ import movies from "../models/movieModel";
 import mongoose from "mongoose";
 
 export const addMovie = async (req, res) => {
-  const product = new movies({
+  const movieData = {
     title: "saiyaara",
     description: "abc",
-    gener: "abc",
-    releaseYear: "2025",
+    genre: "abc",
+    releaseYear: 2025,
     posterImage: "abc",
-  });
-  await product.save();
-  res.json({ message: "Product added!", product });
+  };
+
+  const movie = new movies(movieData);
+  await movie.save();
+  res.json({ message: "Product added!", movie });
 };
 
-addMovie;
+export const getMovies = async (req, res) => {
+  try {
+    const movieList = await movies.find();
+    res.json(movieList);
+  } catch (err) {
+    res.json({ err: "server error" });
+  }
+};

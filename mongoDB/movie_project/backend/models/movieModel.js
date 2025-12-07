@@ -2,25 +2,24 @@ import mongoose from "mongoose";
 
 const movieSchema = new mongoose.Schema({
   title: {
-    type: string,
-    require: true,
+    type: String,
+    required: true,
   },
   description: {
-    type: string,
-    require: true,
+    type: String,
+    required: true,
   },
-  gener: {
-    type: string,
-    require: true,
+  genre: {
+    type: String,
+    required: true,
   },
   releaseYear: {
     type: Number,
-    require: true,
+    required: true,
   },
   posterImage: {
-    type: string,
-    imageUrl: string,
-    require: true,
+    type: String,
+    required: true,
   },
 });
 
