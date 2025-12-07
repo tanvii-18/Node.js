@@ -1,16 +1,7 @@
-import movies from "../models/movieModel";
-import mongoose from "mongoose";
+import movies from "../models/movieModel.js";
 
 export const addMovie = async (req, res) => {
-  const movieData = {
-    title: "saiyaara",
-    description: "abc",
-    genre: "abc",
-    releaseYear: 2025,
-    posterImage: "abc",
-  };
-
-  const movie = new movies(movieData);
+  const movie = new movies(req.body);
   await movie.save();
   res.json({ message: "Product added!", movie });
 };
