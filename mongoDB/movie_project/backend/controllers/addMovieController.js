@@ -1,8 +1,16 @@
 import movies from "../models/movieModel.js";
+import mongoose from "mongoose";
 
 export const addMovie = async (req, res) => {
   try {
-    const { title, description, releaseYear } = req.body;
+    const {
+      title,
+      description,
+      releaseYear,
+      genre = [],
+      duration = 0,
+      cast = [],
+    } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ error: "Poster image is required!" });
@@ -12,12 +20,19 @@ export const addMovie = async (req, res) => {
 
     if (!title || !description || !releaseYear) {
       return res.status(400).json({
-        error:
-          "title, description, realse-year and Movie Poster must required !",
+        error: "title, description, releaseYear and Movie Poster are required!",
       });
     }
 
-    const movie = new movies({ title, description, releaseYear, posterImage });
+    const movie = new movies({
+      title,
+      description,
+      releaseYear,
+      posterImage,
+      genre,
+      duration,
+      cast,
+    });
     await movie.save();
 
     res.json({ message: "movie added!", movie });

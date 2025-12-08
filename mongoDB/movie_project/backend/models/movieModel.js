@@ -11,11 +11,11 @@ const movieSchema = new mongoose.Schema({
   },
   genre: {
     type: [String],
-    required: true,
+    required: false,
   },
   duration: {
     type: Number,
-    required: true,
+    required: false,
   },
   language: {
     type: String,
@@ -24,11 +24,11 @@ const movieSchema = new mongoose.Schema({
   },
   releaseYear: {
     type: Number,
-    required: true,
+    required: false,
   },
   cast: {
     type: [String],
-    required: true,
+    required: false,
   },
   posterImage: {
     type: String,
