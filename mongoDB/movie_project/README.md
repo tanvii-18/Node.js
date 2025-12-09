@@ -1,8 +1,8 @@
 ---
 # 🎬 **MoviesHub – Movie Management App**
 
-A full-stack movie app where you can add, search and view movies with their poster, rating, genre and description.
-Built with a simple backend (Node + Express + MongoDB) and a clean React frontend.
+<p>A full-stack movie app where you can add, search and view movies with their poster, rating, genre and description.
+Built with a simple backend (Node + Express + MongoDB) and a clean React frontend.</p>
 ---
 
 ## 🚀 **Features**
@@ -58,10 +58,9 @@ src/
  ├── components/
  │     ├── MovieList.jsx
  │     ├── MovieCard.jsx
- │     ├── AddMovieModal.jsx
+ │     ├── AddMovie.jsx
  │     ├── SearchBar.jsx
- ├── hooks/
- │     └── useMovies.js
+ │     └── DataFetching.js
  ├── App.jsx
  ├── main.jsx
 ```
@@ -73,7 +72,7 @@ src/
 ```
 GET    /api/movies
 GET    /api/movies/:id
-POST   /api/movies
+POST   /api/movies/post
 PUT    /api/movies/update/:id
 DELETE /api/movies/delete/:id
 ```
@@ -91,7 +90,8 @@ DELETE /api/movies/delete/:id
 
 ## 📸 **Screenshots**
 
-(Add your UI images here)
+<img width="1919" height="825" alt="Screenshot 2025-12-09 222820" src="https://github.com/user-attachments/assets/71be8a8e-a377-4ccb-bc56-ee638880ee21" />
+
 
 ---
 
@@ -100,7 +100,6 @@ DELETE /api/movies/delete/:id
 - Edit movie feature
 - Better card animations
 - Categories & filters
-- JWT authentication
 - Cloud image upload
 
 ---
