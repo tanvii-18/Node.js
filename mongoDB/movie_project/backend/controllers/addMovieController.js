@@ -16,13 +16,14 @@ export const addMovie = async (req, res) => {
       return res.status(400).json({ error: "Poster image is required!" });
     }
 
-    const posterImage = req.file.path;
-
     if (!title || !description || !releaseYear) {
       return res.status(400).json({
         error: "title, description, releaseYear and Movie Poster are required!",
       });
     }
+
+    const path = req.file.path.replace(/\\/g, "/");
+    const posterImage = `http://localhost:5000/${path}`;
 
     const movie = new movies({
       title,

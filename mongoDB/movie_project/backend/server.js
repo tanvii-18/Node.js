@@ -10,6 +10,7 @@ app.use(cors());
 connectDB();
 
 app.use("/api/movies", movieRouter);
+app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
   res.json({ message: "server is running" });
