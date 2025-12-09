@@ -14,12 +14,15 @@ function MovieList() {
     <ul>
       {movies.map((movie) => (
         <div>
-          {" "}
           <li key={movie.id}>{movie.title}</li>
-          <p>{movie.description}</p>
-          <p>{movie.genre}</p>
-          <p>{movie.releaseYear}</p>
-          <p>{movie.rating}</p>
+          <div style={{ display: "flex", gap: "10px" }}>
+            {" "}
+            <img src={movie.imageUrl} alt={movie.title} />
+            <p>{movie.description}</p>
+            <p>{movie.genre}</p>
+            <p>{movie.releaseYear}</p>
+            <p>{movie.rating}</p>
+          </div>
         </div>
       ))}
     </ul>
