@@ -1,25 +1,28 @@
 import Product from "../model/productModel.js";
 
 export const getAllProducts = async (req, res) => {
+  const totalAll = await Product.countDocuments({});
+  console.log("TOTAL IN DB:", totalAll);
+
   try {
     let query = {};
 
-    // Search by productName (case insensitive)
+    // search by name
     if (req.query.name) {
       query.productName = { $regex: req.query.name, $options: "i" };
     }
 
-    // Search by brand (exact match)
+    // filter by brand
     if (req.query.brand) {
       query.brand = req.query.brand;
     }
 
-    // Filter by category (exact match, from query parameter)
+    // filter by category
     if (req.query.category) {
       query.category = req.query.category;
     }
 
-    // Filter by price range (min and max from query)
+    // price range
     if (req.query.minPrice || req.query.maxPrice) {
       query.price = {};
       if (req.query.minPrice) {
@@ -30,48 +33,42 @@ export const getAllProducts = async (req, res) => {
       }
     }
 
-    // Filter by rating above a given value
+    // rating filter
     if (req.query.minRating) {
       query.rating = { $gte: Number(req.query.minRating) };
     }
 
-    // Pagination
+    // pagination
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    // Sorting by price (asc or desc based on query parameter)
+    // sorting
     let sortOptions = {};
     if (req.query.sort) {
       sortOptions.price = req.query.sort === "asc" ? 1 : -1;
     }
 
-    // Build and execute query
+    const total = await Product.countDocuments(query);
+
+    // fetch products
     let productsQuery = Product.find(query);
     if (Object.keys(sortOptions).length > 0) {
       productsQuery = productsQuery.sort(sortOptions);
     }
-    const products = await productsQuery.skip(skip).limit(limit).exec();
 
-    // Total count and pages (j)
-    const total = await Product.countDocuments(query);
-    const totalPages = Math.ceil(total / limit);
+    const products = await productsQuery.skip(skip).limit(limit);
 
-    if (products.length === 0) {
-      return res.status(404).json({ message: "No products found" });
-    }
-
-    // Bonus: All filters work together (e.g., ?category=electronics&minPrice=100&minRating=4&sort=desc&page=1&limit=5)
     res.json({
       products,
       pagination: {
         currentPage: page,
-        totalPages,
+        totalPages: Math.ceil(total / limit),
         total,
         limit,
       },
     });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
 };
