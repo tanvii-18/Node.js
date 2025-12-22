@@ -1,9 +1,9 @@
 🛒 Express + MongoDB Product Filter API
 
-This project is a backend REST API built using Node.js, Express, MongoDB, and Mongoose.
-The main goal is to demonstrate how to fetch and filter product data using different query parameters like search, category, price range, rating, sorting, and pagination.
+A backend REST API built using Node.js, Express, MongoDB, and Mongoose.
+This project focuses on real-world backend concepts like filtering, searching, sorting, and pagination using query parameters.
 
-The API is designed for learning and practical purposes, focusing on real-world backend concepts such as dynamic queries, pagination logic, and proper error handling. No frontend is included.
+It’s designed purely for learning and practical understanding. No frontend involved.
 
 🚀 Features
 
@@ -13,9 +13,11 @@ Fetch a single product by ID
 
 Search products by product name (case-insensitive)
 
-Filter products by brand and category
+Filter products by brand
 
-Combine multiple filters together (name, category, brand)
+Filter products by category
+
+Combine multiple filters (name + category + brand)
 
 Filter products by price range (min & max)
 
@@ -23,14 +25,22 @@ Filter products by rating above a given value
 
 Sort products by price (ascending or descending)
 
-Pagination with page number, limit, total count, and total pages
+Pagination with:
+
+Page number
+
+Limit
+
+Total product count
+
+Total pages
 
 Graceful error handling when no products are found
 
-🧠 Pagination Explained (Student Friendly)
+🧠 Pagination Explained (Student-Friendly)
 
-Pagination helps divide large datasets into smaller chunks.
-Instead of sending all products at once, the API sends a limited number of products per page.
+Pagination is used to divide large datasets into smaller parts.
+Instead of sending all products at once, the API sends a limited number of products per request.
 
 Example:
 
@@ -38,13 +48,12 @@ Total products: 100
 
 Limit: 10
 
-Page 1 → Products 1–10
+Page Products Returned
+Page 1 1 – 10
+Page 2 11 – 20
+Page 3 21 – 30
 
-Page 2 → Products 11–20
-
-Page 3 → Products 21–30
-
-This improves performance and makes APIs scalable.
+This improves performance, reduces load, and makes APIs scalable.
 
 🛠️ Tech Stack
 
@@ -60,7 +69,7 @@ Postman (for API testing)
 
 📂 Product Schema Fields
 
-Each product contains:
+Each product document contains the following fields:
 
 productName
 
@@ -76,38 +85,74 @@ description
 
 createdAt
 
-🔍 Sample API Endpoints
+🔍 API Endpoints
+📌 Basic Routes
+GET /api/products
 
-GET /api/products → Fetch all products
+Fetch all products
 
-GET /api/products/:id → Fetch product by ID
+GET /api/products/:id
 
-GET /api/products?name=iPhone → Search by product name
+Fetch a product by its ID
 
-GET /api/products?brand=Apple → Filter by brand
+🔎 Search & Filter Routes
+GET /api/products?name=iPhone
 
-GET /api/products?category=electronics → Filter by category
+Search by product name (case-insensitive)
 
-GET /api/products?minPrice=500&maxPrice=2000 → Price range filter
+GET /api/products?brand=Apple
 
-GET /api/products?minRating=4 → Rating filter
+Filter by brand
 
-GET /api/products?sort=asc → Sort by price (ascending)
+GET /api/products?category=electronics
 
-GET /api/products?page=1&limit=5 → Pagination
+Filter by category
 
-GET /api/products?category=electronics&minPrice=500&minRating=4&sort=desc&page=1&limit=5 → Combined filters (Bonus)
+GET /api/products?minPrice=500&maxPrice=2000
+
+Filter by price range
+
+GET /api/products?minRating=4
+
+Filter by rating above a given value
+
+🔃 Sorting
+GET /api/products?sort=asc
+
+Sort by price (ascending)
+
+GET /api/products?sort=desc
+
+Sort by price (descending)
+
+📄 Pagination
+GET /api/products?page=1&limit=5
+
+Pagination with page number and limit
+
+⭐ Bonus: Combined Filters
+GET /api/products?category=electronics&minPrice=500&minRating=4&sort=desc&page=1&limit=5
+
+Multiple filters working together in a single API call.
+
+❌ Error Handling
+
+If no products match the filter criteria, the API responds with:
+
+{
+"message": "No products found"
+}
 
 ✅ Project Outcome
 
-This project demonstrates how to:
+Through this project, you learn how to:
 
 Build scalable REST APIs
 
-Use MongoDB queries dynamically
+Write dynamic MongoDB queries
 
 Implement pagination and sorting logic
 
-Test APIs using Postman
+Handle real-world filtering scenarios
 
-Handle real-world backend filtering scenarios
+Test APIs efficiently using Postman
