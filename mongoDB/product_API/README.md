@@ -27,17 +27,6 @@ Filter products by rating above a given value
 
 Sort products by price (ascending or descending)
 
-Pagination with:
-
-Page number
-
-Limit
-
-Total product count
-
-Total pages
-
-Graceful error handling when no products are found
 
 ## 🧠 Pagination Explained (Student-Friendly)
 
