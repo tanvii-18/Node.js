@@ -7,7 +7,7 @@ app.use(express.json());
 connectDB();
 
 app.get("/", (req, res) => {
-  res.send("Home");
+  res.json({ message: "server is running" });
 });
 
 app.listen(3000, () => {
