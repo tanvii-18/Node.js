@@ -1,9 +1,12 @@
-✍️ WriteHub – Blog Management System Backend
+## ✍️ WriteHub – Blog Management System Backend
 
 WriteHub is a backend-only Blog Management System built using Node.js, Express, MongoDB, and Mongoose.
 The project follows a clean MVC architecture and focuses on cookie-based authentication, secure user access, and blog CRUD operations. All APIs are tested using Postman and are ready for frontend integration.
 
-✨ Features
+
+<h2 style="color:#4f46e5;">✨ Features</h2>
+
+
 🔐 Authentication
 
 User signup (register new users)
@@ -18,7 +21,9 @@ Logout functionality
 
 Protected routes for authenticated users only
 
-📝 Blog Management
+
+<h2>📝 Blog Management</h2>
+
 
 Create blog posts
 
@@ -30,7 +35,7 @@ Get all blog posts
 
 Get a single blog post by ID
 
-🖼 Image Upload
+### 🖼 Image Upload
 
 Image upload using Multer
 
@@ -40,16 +45,23 @@ Image path saved in MongoDB
 
 Public access to uploaded images
 
-📁 Folder Structure
+<h2>📁 Folder Structure</h2> 
+
 /config → Database connection
+
 /controllers → Auth & blog controller logic
+
 /middleware → Authentication middleware
+
 /models → User & Blog schemas
+
 /routes → Auth & blog routes
+
 /uploads → Uploaded blog images
+
 /server.js → App entry point
 
-⚙️ Tech Stack
+<h2>⚙️ Tech Stack</h2>
 
 Node.js
 
@@ -65,10 +77,12 @@ bcrypt
 
 Cookie-based authentication
 
-🔧 How to Run Locally
+<h2> 🔧 How to Run Locally</h2>
+
 npm install
+
 node server.js
 
-📌 Note :
+<h2>📌 Note :</h2>
 
 This is a backend-only project.
