@@ -36,10 +36,10 @@ Proper error handling & validation with HTTP status codes
 
 bash
 ### Clone the repository
-git clone https://github.com/your-username/login-system.git
+git clone https://github.com/tanvii-18/Node.js.git
 
 ### Navigate into project folder
-cd login-system
+cd Node.js/nodeMailer/Login System
 
 ## Run the server
 npm start
