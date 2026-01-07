@@ -1,6 +1,6 @@
-import { User } from "../model/userSchema";
+import { User } from "../model/userSchema.js";
 import bcrypt from "bcrypt";
-import { sendOTP } from "../utils/sendOTP";
+import { sendOTP } from "../utils/sendOTP.js";
 
 // signup user - check exisitng + send otp
 export const signup = async (req, res) => {
@@ -33,7 +33,8 @@ export const signup = async (req, res) => {
       user,
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.error("Signup Error:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 

@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  registerUser,
-  verifyOTP,
-  loginUser,
+  signup,
+  verifyOtp,
+  login,
   home,
   logout,
-} from "../controllers/authController.js";
+} from "../controller/authController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/register", registerUser);
-router.post("/verify-otp", verifyOTP);
-router.post("/login", loginUser);
+router.post("/signup", signup);
+router.post("/verify-otp", verifyOtp);
+router.post("/login", login);
 router.post("/logout", logout);
 router.get("/home", authMiddleware, home);
 

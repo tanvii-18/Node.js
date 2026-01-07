@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -11,6 +11,8 @@ export const sendOTP = async (email, otp) => {
       pass: process.env.PASS,
     },
   });
+  console.log("EMAIL:", process.env.EMAIL);
+  console.log("PASS:", process.env.PASS);
 
   await transporter.sendMail({
     from: `Login-system! <${process.env.EMAIL}>`,
