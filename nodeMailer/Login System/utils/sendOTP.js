@@ -1,4 +1,7 @@
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const sendOTP = async (email, otp) => {
   const transporter = nodemailer.createTransport({
