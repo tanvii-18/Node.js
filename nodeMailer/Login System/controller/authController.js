@@ -1,5 +1,6 @@
 import { User } from "../model/userSchema.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { sendOTP } from "../utils/sendOTP.js";
 
 // signup user - check exisitng + send otp
@@ -13,24 +14,22 @@ export const signup = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otpExpiry = new Date(Date.now() + 2 * 60 * 1000);
 
-    const otpExpiry = new Date(Date.now() + 1000 * 60 * 2);
+    await sendOTP(email, otp);
 
-    const user = await User.create({
+    await User.create({
       name,
       email,
       password: hashedPassword,
       otp,
       otpExpiry,
+      isVerified: false,
     });
-
-    await sendOTP(email, otp);
 
     res.status(201).json({
       message: "Registration successful. Please verify OTP.",
-      user,
     });
   } catch (error) {
     console.error("Signup Error:", error);
@@ -105,7 +104,7 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -125,7 +124,7 @@ export const logout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "strict",
     });
 
