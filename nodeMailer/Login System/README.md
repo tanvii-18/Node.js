@@ -2,6 +2,9 @@
 A secure, modern, and fast authentication system built with Node.js  + Express.js  + MongoDB.
 Robust user authentication with OTP-based email verification, JWT-protected routes, and clean error handling — perfect for learning and production use!
 
+## Output Video :
+https://github.com/user-attachments/assets/fdb3ca63-0257-45ee-8efb-1a5e83bef8ab
+
 
 ## 🛠️ Tech Stack
 
